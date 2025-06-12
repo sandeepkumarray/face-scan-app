@@ -2,35 +2,62 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>FaceCare | Home</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      margin: 0; padding: 0;
-      display: flex; justify-content: center; align-items: center;
-      height: 100vh; background: linear-gradient(to right, #fceabb, #f8b500);
-    }
-    .container {
-      text-align: center;
-    }
-    h1 { font-size: 2.5rem; margin-bottom: 10px; }
-    p { font-size: 1.2rem; margin-bottom: 30px; }
-    button {
-      background: #fff; border: none; padding: 15px 30px;
-      font-size: 1.1rem; border-radius: 50px;
-      cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
-    }
-    button:hover { transform: scale(1.05); }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Landing</title>
+  
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<link rel="stylesheet" href="./css/app.css">
 </head>
 <body>
-  <div class="container">
-    <h1><i class="fas fa-spa"></i> Welcome to FaceCare</h1>
-    <p>Your personalized skin diagnosis & care routine starts here.</p>
-    <button onclick="location.href='scan.html'"><i class="fas fa-camera"></i> Start Face Scan</button>
+
+<nav class="navbar navbar-light px-4 py-3">
+  <h4 class="m-0">Glowify</h4>
+  
+<div class="form-check form-switch ms-auto">
+  <input class="form-check-input d-none" type="checkbox" id="themeToggle">
+  <label class="form-check-label" for="themeToggle">
+    <i id="themeIcon" class="bi bi-moon-fill"></i>
+  </label>
+</div>
+
+</nav>
+<div class="container my-5">
+  <div class="card p-5 border shadow text-center">
+    <h1 class="display-5">Unlock Your Best Skin</h1>
+    <p class="lead">AI-powered skin scan and personalized beauty product recommendations.</p>
+    <a href="login.html" class="btn btn-primary btn-lg mt-4">Get Started</a>
   </div>
+</div>
+
+
+<script>
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+
+  const setTheme = (theme) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    icon.className = theme === 'dark' ? 'bi bi-moon-fill' : 'bi bi-sun-fill';
+  };
+
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  if (currentTheme === 'dark') {
+    setTheme('dark');
+    toggle.checked = true;
+  } else {
+    setTheme('light');
+    toggle.checked = false;
+  }
+
+  toggle?.addEventListener('change', () => {
+    if (toggle.checked) {
+      setTheme('dark');
+    } else {
+      setTheme('light');
+    }
+  });
+</script>
+
 </body>
 </html>

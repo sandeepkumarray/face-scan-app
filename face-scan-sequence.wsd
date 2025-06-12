@@ -1,0 +1,30 @@
+@startuml
+title Face Scan Web App Flow
+
+start
+
+:Load Application;
+
+:User clicks "Login";
+:User clicks "Start Scan/ Upload Image";
+
+:Request Webcam Access;
+note right
+  Show live webcam feed
+end note
+
+:User clicks "Scan Now";
+
+repeat
+:Capture snapshot to canvas;
+  
+repeat while (Image Captured by AI?) is (no) not (yes)
+--> [Redirect to results]
+:Display face image;
+:Show problem area markers;
+:Hover reveals tooltip & arrow with problem details;
+
+:Show recommended products;
+:User can view or buy items;
+stop
+@enduml
